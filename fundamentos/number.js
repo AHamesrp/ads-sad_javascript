@@ -1,0 +1,10 @@
+var altura = 5;
+var largura = 15;
+var area = altura * largura;
+var perimetro = 2 * (altura + largura);
+console.log("Área:", area);
+console.log("Perímetro:", perimetro);
+var restoDivisao = largura % altura;
+console.log("Resto da divisão (largura por altura):", restoDivisao);
+var hipotenusa = Math.sqrt(altura ** 2 + largura ** 2);
+console.log("Hipotenusa:", hipotenusa);

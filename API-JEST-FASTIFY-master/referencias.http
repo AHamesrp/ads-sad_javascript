@@ -1,0 +1,75 @@
+### Teste de Health Check
+GET http://localhost:3333/
+
+### Cadastrar Usuário 1
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+    "name": "Marquinho Coelho",
+    "email": "marquinho@email.com",
+    "password": "123"
+}
+
+### Cadastrar Usuário 2
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+    "name": "Maria Silva",
+    "email": "maria@email.com",
+    "password": "abc"
+}
+
+### Tentar Login (Sucesso)
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+    "email": "marquinho@email.com",
+    "password": "123"
+}
+
+### Tentar Login (Falha)
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+    "email": "marquinho@email.com",
+    "password": "senhaerrada"
+}
+
+### ===== ROTAS DE RPG (DESAFIO) =====
+
+### Cadastrar Personagem 1
+POST http://localhost:3333/personagens
+Content-Type: application/json
+
+{
+    "name": "Aragorn",
+    "classe": "Guerreiro",
+    "nivel": 10
+}
+
+### Cadastrar Personagem 2
+POST http://localhost:3333/personagens
+Content-Type: application/json
+
+{
+    "name": "Gandalf",
+    "classe": "Mago",
+    "nivel": 50
+}
+
+### Cadastrar Personagem 3
+POST http://localhost:3333/personagens
+Content-Type: application/json
+
+{
+    "name": "Legolas",
+    "classe": "Arqueiro",
+    "nivel": 15
+}
+
+### Listar Todos os Personagens
+GET http://localhost:3333/personagens

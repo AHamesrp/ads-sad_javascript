@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Adivinhação</h1>
+    <p>Adivinhe um número entre 1 e 100</p>
+    <input type="number" id="guess" min="1" max="100" />
+    <button onclick="checkGuess()">Enviar Palpite</button>
+    <div class="message" id="message"></div>
+    <button id="restart" onclick="restartGame()" style="display:none;">Reiniciar Jogo</button>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            const userGuess = Number(document.getElementById("guess").value);
+            const messageDiv = document.getElementById("message");
+
+            if (userGuess < 1 || userGuess > 100) {
+                messageDiv.innerHTML = "Número entre 1 e 100.";
+                return;
+            }
+
+            if (userGuess > randomNumber) {
+                messageDiv.innerHTML = "Menor";
+            } else if (userGuess < randomNumber) {
+                messageDiv.innerHTML = "Maior";
+            } else {
+                messageDiv.innerHTML = "Acertou" + randomNumber + ""
+                document.getElementById("restart").style.display = "inline-block";
+            }
+        }
+
+        function restartGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("guess").value = '';
+            document.getElementById("message").innerHTML = '';
+            document.getElementById("restart").style.display = "none";
+        }
+    </script>
+</body>
+</html>

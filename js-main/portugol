@@ -1,0 +1,170 @@
+registro Passageiro
+    nome: texto
+    documento: texto
+    embarcado: lógico
+    bagagemOk: lógico
+fimregistro
+
+registro Voo
+    numero: texto
+    destino: texto
+    horario: texto
+    capacidade: inteiro
+    embarcados: inteiro
+fimregistro
+
+registro Bagagem
+    peso: real
+    tipo: texto
+    autorizada: lógico
+fimregistro
+
+passageiros: vetor[1..10] de Passageiro
+voos: vetor[1..3] de Voo
+bagagens: vetor[1..10] de Bagagem
+quantPassageiros: inteiro <- 0
+
+funcao listarVoos()
+    para i de 1 ate 3 faca
+        escreva(i, " - ", voos[i].numero, " | ", voos[i].destino, " | ", voos[i].horario, "\n")
+    fimpara
+fimfuncao
+
+funcao validar(indice: inteiro, max: inteiro): lógico
+    retorne indice >= 1 e indice <= max
+fimfuncao
+
+funcao cadastrarPassageiro()
+    se quantPassageiros = 10 entao
+        escreva("Limite de passageiros.\n")
+        retorne
+    fimse
+
+    quantPassageiros <- quantPassageiros + 1
+    escreva("Nome: ")
+    leia(passageiros[quantPassageiros].nome)
+    escreva("Documento: ")
+    leia(passageiros[quantPassageiros].documento)
+    passageiros[quantPassageiros].embarcado <- falso
+    passageiros[quantPassageiros].bagagemOk <- falso
+    bagagens[quantPassageiros].peso <- 0
+    bagagens[quantPassageiros].tipo <- ""
+    bagagens[quantPassageiros].autorizada <- falso
+    escreva("Passageiro cadastrado.\n")
+fimfuncao
+
+funcao registrarBagagem()
+    se quantPassageiros = 0 entao
+        escreva("Nenhum passageiro.\n")
+        retorne
+    fimse
+
+    escreva("Passageiro (1 a ", quantPassageiros, "): ")
+    leia(ind)
+    se nao validar(ind, quantPassageiros) entao
+        escreva("Inválido.\n")
+        retorne
+    fimse
+
+    escreva("Peso (kg): ")
+    leia(bagagens[ind].peso)
+    escreva("Tipo (mala/mochila): ")
+    leia(bagagens[ind].tipo)
+    bagagens[ind].autorizada <- bagagens[ind].peso <= 30 e (bagagens[ind].tipo = "mala" ou bagagens[ind].tipo = "mochila")
+    passageiros[ind].bagagemOk <- bagagens[ind].autorizada
+
+    se bagagens[ind].autorizada entao
+        escreva("Bagagem autorizada.\n")
+    senao
+        escreva("Bagagem NÃO autorizada.\n")
+    fimse
+fimfuncao
+
+funcao embarcar()
+    se quantPassageiros = 0 entao
+        escreva("Nenhum passageiro.\n")
+        retorne
+    fimse
+
+    escreva("Passageiro (1 a ", quantPassageiros, "): ")
+    leia(indP)
+    se nao validar(indP, quantPassageiros) entao
+        escreva("Inválido.\n")
+        retorne
+    fimse
+
+    listarVoos()
+    escreva("Voo (1 a 3): ")
+    leia(indV)
+    se nao validar(indV, 3) entao
+        escreva("Inválido.\n")
+        retorne
+    fimse
+
+    se passageiros[indP].embarcado entao
+        escreva("Já embarcou.\n")
+        retorne
+    fimse
+
+    se voos[indV].embarcados >= voos[indV].capacidade entao
+        escreva("Voo cheio.\n")
+        retorne
+    fimse
+
+    passageiros[indP].embarcado <- verdadeiro
+    voos[indV].embarcados <- voos[indV].embarcados + 1
+    escreva("Embarque realizado.\n")
+fimfuncao
+
+funcao emitirBilhete()
+    se quantPassageiros = 0 entao
+        escreva("Nenhum passageiro.\n")
+        retorne
+    fimse
+
+    escreva("Passageiro (1 a ", quantPassageiros, "): ")
+    leia(indP)
+    se nao validar(indP, quantPassageiros) entao
+        escreva("Inválido.\n")
+        retorne
+    fimse
+
+    listarVoos()
+    escreva("Voo (1 a 3): ")
+    leia(indV)
+    se nao validar(indV, 3) entao
+        escreva("Inválido.\n")
+        retorne
+    fimse
+
+    escreva("\n--- Bilhete ---\n")
+    escreva("Passageiro: ", passageiros[indP].nome, "\n")
+    escreva("Documento: ", passageiros[indP].documento, "\n")
+    escreva("Status: ", se passageiros[indP].embarcado entao "Embarcado" senao "Não embarcado" fimse, "\n")
+    escreva("Voo: ", voos[indV].numero, " | ", voos[indV].destino, " | ", voos[indV].horario, "\n")
+    escreva("------------------\n")
+fimfuncao
+
+funcao principal()
+    voos[1] <- ("GOL123", "São Paulo", "14:30", 5, 0)
+    voos[2] <- ("AZU456", "Rio de Janeiro", "16:00", 7, 0)
+    voos[3] <- ("LAT789", "Brasília", "18:45", 6, 0)
+
+    opcao: inteiro <- 0
+
+    enquanto opcao <> 6 faca
+        escreva("\n1-Cadastrar  2-Voos  3-Bagagem  4-Embarque  5-Bilhete  6-Sair\n")
+        escreva("Opção: ")
+        leia(opcao)
+
+        escolha opcao
+            caso 1: cadastrarPassageiro()
+            caso 2: listarVoos()
+            caso 3: registrarBagagem()
+            caso 4: embarcar()
+            caso 5: emitirBilhete()
+            caso 6: escreva("Encerrando...\n")
+            caso contrario: escreva("Opção inválida.\n")
+        fimescolha
+    fimenquanto
+fimfuncao

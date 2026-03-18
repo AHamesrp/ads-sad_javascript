@@ -1,0 +1,16 @@
+{
+  "name": "sistema",
+  "version": "1.0.0",
+  "description": "Sistema web completo para gerenciamento de clínica veterinária, desenvolvido para o SAEP.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.81.1",
+    "express": "^5.1.0"
+  }
+}

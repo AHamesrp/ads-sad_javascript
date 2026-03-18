@@ -1,0 +1,11 @@
+const grandeNumero1 = 1234567890123456789012345678901234567890n;
+const grandeNumero2 = 9876543210987654321098765432109876543210n;
+const soma = grandeNumero1 + grandeNumero2;
+const subtracao = grandeNumero1 - grandeNumero2;
+const multiplicacao = grandeNumero1 * grandeNumero2;
+const divisao = grandeNumero1 / grandeNumero2;
+console.log("Soma:", soma);
+console.log("Subtração:", subtracao);
+console.log("Multiplicação:", multiplicacao);
+console.log("Divisão:", divisao);
+console.log("grandeNumero1 > grandeNumero2:", grandeNumero1 > grandeNumero2);

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema Veterinário</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background: #f5f6fa;">
+    <div class="dashboard-container">
+        <div class="header">
+            <div>
+                <h1>🐾 VetClinic - Dashboard</h1>
+                <div class="user-info">
+                    Bem-vindo, <strong id="userName"></strong> | <span id="userType"></span>
+                </div>
+            </div>
+            <button class="btn-logout" onclick="logout()">Sair</button>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>📋 Animais</h3>
+                <p>Gerenciar cadastro de pacientes</p>
+                <button onclick="alert('Em desenvolvimento')" style="margin-top: 10px; padding: 8px 16px; border: none; background: #667eea; color: white; border-radius: 5px; cursor: pointer;">Acessar</button>
+            </div>
+
+            <div class="card">
+                <h3>👤 Tutores</h3>
+                <p>Gerenciar cadastro de tutores</p>
+                <button onclick="alert('Em desenvolvimento')" style="margin-top: 10px; padding: 8px 16px; border: none; background: #667eea; color: white; border-radius: 5px; cursor: pointer;">Acessar</button>
+            </div>
+
+            <div class="card">
+                <h3>📅 Consultas</h3>
+                <p>Agendar e gerenciar consultas</p>
+                <button onclick="alert('Em desenvolvimento')" style="margin-top: 10px; padding: 8px 16px; border: none; background: #667eea; color: white; border-radius: 5px; cursor: pointer;">Acessar</button>
+            </div>
+
+            <div class="card">
+                <h3>👨‍⚕️ Veterinários</h3>
+                <p>Gerenciar cadastro de veterinários</p>
+                <button onclick="alert('Em desenvolvimento')" style="margin-top: 10px; padding: 8px 16px; border: none; background: #667eea; color: white; border-radius: 5px; cursor: pointer;">Acessar</button>
+            </div>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h2>ℹ️ Informações do Sistema</h2>
+            <p>Este é um sistema de demonstração para gestão de clínica veterinária.</p>
+            <p><strong>Funcionalidades implementadas:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>✅ Autenticação de usuários (JWT)</li>
+                <li>✅ CRUD completo de animais (backend)</li>
+                <li>✅ Estrutura de banco de dados</li>
+                <li>✅ API REST documentada</li>
+                <li>⏳ Frontend em desenvolvimento</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
